@@ -5,30 +5,28 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.xml.crypto.Data;
 
 public class Order {
 
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	
+
 	private Date moment;
 	private OrderStatus status;
-	
+
 	private Client client;
-	
-	private List<OrderItem> items = new ArrayList<OrderItem> ();
-	
-	
-	public void Order() {
-		
+
+	private List<OrderItem> items = new ArrayList<OrderItem>();
+
+	public Order() {
+
 	}
-	
+
 	public Order(Date moment, OrderStatus status) {
-		
+		super();
 		this.moment = moment;
 		this.status = status;
 		this.client = client;
-		
+
 	}
 
 	public Date getMoment() {
@@ -53,23 +51,26 @@ public class Order {
 
 	public void setClient(Client client) {
 		this.client = client;
+		
 	}
-	
+
 	public void addIdem(OrderItem item) {
 		items.add(item);
 	}
+
 	public void removeIdem(OrderItem item) {
 		items.remove(item);
 	}
-	
-	public double total () {
+
+	public double total() {
 		double sum = 0.0;
 		for (OrderItem i : items) {
 			sum += i.subTotal();
-			
+
 		}
 		return sum;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -86,10 +87,6 @@ public class Order {
 		sb.append("Total price: $");
 		sb.append(String.format("%.2f", total()));
 		return sb.toString();
-	}	
+	}
 
-	
-	
-	
-	
 }
